@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+require('dotenv').config();
 
 const generateUniqueValue = (prefix = '') => `${prefix}${Date.now()}${Math.floor(Math.random() * 1000)}`;
 
