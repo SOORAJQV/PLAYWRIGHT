@@ -1,6 +1,7 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../jira-fixture';
 
-test('test', async ({ page }) => {
+test('SCT_LOGIN @smoke', async ({ page }) => {
 
   test.setTimeout(60000);
 
@@ -36,7 +37,7 @@ test('test', async ({ page }) => {
 
   await page.locator('button[name="submit-search"]').click();
   await page.waitForSelector('text=Suspended', { timeout: 10000 });
-  const isSuspendedVisible = await page.isVisible('text=Suspended');
+  const isSuspendedVisible = await page.isVisible('text=Suspened');
   expect(isSuspendedVisible).toBeTruthy();
   await page.waitForLoadState('networkidle');
   await page.screenshot({ path: 'screenshots/step7.png' });
