@@ -1,0 +1,120 @@
+
+Running 3 tests using 3 workers
+
+[1A[2K[1/3] [chromium] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+[1A[2K[2/3] [firefox] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+[1A[2K[3/3] [webkit] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+[1A[2K[chromium] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+Navigating to the login page...
+
+[1A[2KLogin page loaded successfully.
+
+[1A[2KFilling in username and password...
+
+[1A[2KVerified Username and password fields are enabled.
+
+[1A[2KClicking on Sign In button...
+
+[1A[2KLogin to Tom user is successful.
+
+[1A[2KNavigating to the shop tab...
+
+[1A[2K[webkit] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+Navigating to the login page...
+
+[1A[2K[chromium] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+✅ Created issue: XSP-359
+
+[1A[2K🔗 https://qvantel-sandbox.atlassian.net/browse/XSP-359
+
+[1A[2K  1) [chromium] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression ───────────
+
+    [31mTest timeout of 60ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: ' Shop' })[22m
+
+
+      28 |   console.log('Navigating to the shop tab...');
+      29 |   await page.getByRole('link', { name: 'Return to the start page' }).click();
+    > 30 |   await page.getByRole('link', { name: ' Shop' }).click();
+         |                                                    ^
+      31 |   await page.getByRole('link', { name: 'Mobile Postpaid' }).click();
+      32 |   console.log('Navigated to shop tab and opened Mobile postpaid section from Plans.');
+      33 |
+        at /Users/qvantel/Desktop/playwright/tests/POST_ONBRD.spec.ts:30:52
+
+
+[1A[2K[webkit] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+Login page loaded successfully.
+
+[1A[2KFilling in username and password...
+
+[1A[2KVerified Username and password fields are enabled.
+
+[1A[2KClicking on Sign In button...
+
+[1A[2KLogin to Tom user is successful.
+
+[1A[2KNavigating to the shop tab...
+
+[1A[2K✅ Created issue: XSP-360
+
+[1A[2K🔗 https://qvantel-sandbox.atlassian.net/browse/XSP-360
+
+[1A[2K[firefox] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression
+Navigating to the login page...
+
+[1A[2K✅ Created issue: XSP-361
+
+[1A[2K🔗 https://qvantel-sandbox.atlassian.net/browse/XSP-361
+
+[1A[2KLogin page loaded successfully.
+
+[1A[2KFilling in username and password...
+
+[1A[2K  2) [webkit] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression ─────────────
+
+    [31mTest timeout of 60ms exceeded.[39m
+
+    Error: locator.click: Test timeout of 60ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('link', { name: ' Shop' })[22m
+
+
+      28 |   console.log('Navigating to the shop tab...');
+      29 |   await page.getByRole('link', { name: 'Return to the start page' }).click();
+    > 30 |   await page.getByRole('link', { name: ' Shop' }).click();
+         |                                                    ^
+      31 |   await page.getByRole('link', { name: 'Mobile Postpaid' }).click();
+      32 |   console.log('Navigated to shop tab and opened Mobile postpaid section from Plans.');
+      33 |
+        at /Users/qvantel/Desktop/playwright/tests/POST_ONBRD.spec.ts:30:52
+
+
+[1A[2K  3) [firefox] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression ────────────
+
+    [31mTest timeout of 60ms exceeded.[39m
+
+    Error: locator.fill: Test timeout of 60ms exceeded.
+    Call log:
+    [2m  - waiting for getByRole('textbox', { name: 'Username or email' })[22m
+
+
+      17 |
+      18 |   console.log('Filling in username and password...');
+    > 19 |   await page.getByRole('textbox', { name: 'Username or email' }).fill('tom');
+         |                                                                  ^
+      20 |   await page.getByRole('textbox', { name: 'Password' }).fill('omission_bottom_tom');
+      21 |   console.log('Verified Username and password fields are enabled.');
+      22 |
+        at /Users/qvantel/Desktop/playwright/tests/POST_ONBRD.spec.ts:19:66
+
+
+[1A[2K  3 failed
+    [chromium] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression ────────────
+    [firefox] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression ─────────────
+    [webkit] › tests/POST_ONBRD.spec.ts:8:5 › POSTPAID_ONBOARDING_VIA_SCT @regression ──────────────
+
+[36m  Serving HTML report at http://localhost:9323. Press Ctrl+C to quit.[39m

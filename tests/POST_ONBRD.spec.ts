@@ -1,4 +1,6 @@
-import { test, expect } from '@playwright/test';
+import { expect } from '@playwright/test';
+import { test } from '../jira-fixture';
+
 require('dotenv').config();
 
 const generateUniqueValue = (prefix = '') => `${prefix}${Date.now()}${Math.floor(Math.random() * 1000)}`;
@@ -10,7 +12,7 @@ test('test', async ({ page, context }) => {
   await context.tracing.start({ screenshots: true, snapshots: true });
 
   console.log('Navigating to the login page...');
-  await page.goto('https://auth-q-sit-pf.qvantel.systems/auth/realms/qvantel/protocol/openid-connect/auth?ui_locales=en&scope=openid&response_type=code&redirect_uri=https%3A%2F%2Fsct-q-sit-pf.qvantel.systems%3A443%2Foauth2%2Fcallback&state=a43b005c-2253-4930-9670-c4e076d51186%7C%2F&client_id=sales-and-care-toolbox');
+  await page.goto('https://auth-q-sit-pf.qvantel.systems/auth/realms/qvantel/protocol/openid-connect/auth?ui_locales=en&scope=openid&response_type=code&redirect_uri=https%3A%2F%2Fsct-q-sit-pf.qvantel.systems%3A443%2Foauth2%2Fcallback&state=510b7232-2341-4ab8-9af7-212e6e9e157f%7C%2F&client_id=sales-and-care-toolbox');
   console.log('Login page loaded successfully.');
 
   console.log('Filling in username and password...');
@@ -20,11 +22,11 @@ test('test', async ({ page, context }) => {
 
   console.log('Clicking on Sign In button...');
   await page.getByRole('button', { name: 'Sign In' }).click();
+  await page.getByRole('link', { name: 'Return to the start page' }).click();
   await page.getByRole('button', { name: 'Logged in Tom Tamer ' });
   console.log('Login to Tom user is successful.');
 
   console.log('Navigating to the shop tab...');
-  await page.getByRole('link', { name: 'Return to the start page' }).click();
   await page.getByRole('link', { name: ' Shop' }).click();
   await page.getByRole('link', { name: 'Mobile Postpaid' }).click();
   console.log('Navigated to shop tab and opened Mobile postpaid section from Plans.');
@@ -50,7 +52,7 @@ test('test', async ({ page, context }) => {
 
   const uniqueGivenName = generateUniqueValue('GN-');
   await page.getByRole('textbox', { name: 'Given Name *' }).fill(uniqueGivenName);
-  await page.getByRole('textbox', { name: 'FamilyName *' }).fill(uniqueGivenName);
+  await page.getByRole('textbox', { name: 'Family Name *' }).fill(uniqueGivenName);
   await page.getByLabel('Country', { exact: true }).selectOption('FI');
   await page.getByRole('textbox', { name: 'City *' }).fill(generateUniqueValue('City-'));
   await page.getByRole('textbox', { name: 'Street *' }).fill(generateUniqueValue('Street-'));
@@ -60,13 +62,13 @@ test('test', async ({ page, context }) => {
   await page.getByRole('button', { name: 'Continue' }).click();
   console.log('Customer details are entered successfully and clicked on continue button.');
 
-  await page.getByRole('row', { name: 'Qvantel Super 5G  Postpaid' }).locator('sct-table-actions-common').getByRole('link').click();
+  await page.getByRole('row', { name: 'Qvantel Super  Postpaid' }).locator('sct-table-actions-common').getByRole('link').click();
   await page.getByRole('button', { name: 'Select', exact: true }).click();
   await page.locator('sct-flowable').filter({ hasText: 'Geo Localization consent' }).getByRole('button').click();
   await page.locator('sct-flowable').filter({ hasText: 'StockPriceQRP-automation-' }).getByRole('button').click();
-  console.log('Successfully selected the Plan Qvantel Super 5G Postpaid and clicked on continue button.');
+  console.log('Successfully selected the Plan Qvantel Super Postpaid and clicked on continue button.');
 
-  const radioButton = page.locator('//html/body/ui-view/sct-app/div/div/main/section/ui-view/sct-shop-widget/div/sct-flex-wizard/div/div[1]/div[1]/span[1]/sct-flex-wizard-component-renderer/div[2]/sct-flowable/div[1]/sct-form/form/sct-form-dd-radio-input/div/div/div[1]/input');
+  const radioButton = page.locator("xpath=/html/body/ui-view/sct-app/div/div/main/section/ui-view/sct-shop-widget/div/sct-flex-wizard/div/div[1]/div[1]/span[1]/sct-flex-wizard-component-renderer/div[2]/sct-flowable/div[1]/sct-form/form/div[15]/sct-form-dd-radio-input/div/div/div[1]/input");
   await radioButton.waitFor({ state: 'visible' });
   const radioButtonId = await radioButton.getAttribute('id');
   const radioButtonLabel = page.locator(`label[for="${radioButtonId}"]`);
@@ -95,7 +97,7 @@ test('test', async ({ page, context }) => {
   console.log('The customer created is searched and the customer is opened successfully.');
 
   console.log('Waiting for 3 mins for status change from Pending to Active...');
-  await new Promise(resolve => setTimeout(resolve, 240000));
+  await new Promise(resolve => setTimeout(resolve, 30000));
   await page.reload();
 
   console.log('Waiting for the "Active" status to appear...');
