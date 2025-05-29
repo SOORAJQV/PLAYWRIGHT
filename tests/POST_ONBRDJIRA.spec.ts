@@ -100,7 +100,7 @@ test('test', async ({ page, context }) => {
   console.log('Waiting for the "Active" status to appear...');
   await page.reload();
   const activeStatusLocator = page.locator('sct-key-value').getByText('Active');
-  await activeStatusLocator.waitFor({ state: 'visible', timeout: 120000 });
+  await activeStatusLocator.waitFor({ state: 'visible', timeout: 60000 });
   console.log('"Active" status is now visible.');
 
   console.log('Verifying the Active status in the product page...');
