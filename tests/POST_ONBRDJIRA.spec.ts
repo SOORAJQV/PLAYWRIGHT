@@ -6,10 +6,7 @@ require('dotenv').config();
 const generateUniqueValue = (prefix = '') => `${prefix}${Date.now()}${Math.floor(Math.random() * 1000)}`;
 
 test('test', async ({ page, context }) => {
-  test.setTimeout(60000); // Set timeout to 1 minute 
-
-  
-  await context.tracing.start({ screenshots: true, snapshots: true });
+  test.setTimeout(60000); 
 
   console.log('Navigating to the login page...');
   await page.goto('https://auth-q-sit-pf.qvantel.systems/auth/realms/qvantel/protocol/openid-connect/auth?ui_locales=en&scope=openid&response_type=code&redirect_uri=https%3A%2F%2Fsct-q-sit-pf.qvantel.systems%3A443%2Foauth2%2Fcallback&state=510b7232-2341-4ab8-9af7-212e6e9e157f%7C%2F&client_id=sales-and-care-toolbox');
@@ -120,7 +117,4 @@ test('test', async ({ page, context }) => {
   await page.locator('#orderDetailsOrderStatus').getByText('Completed');
   console.log('Verified the Subscription name and the order status is completed.');
 
-  
-  await context.tracing.stop({ path: 'trace.zip' });
-  console.log('Trace saved to trace.zip');
 });
