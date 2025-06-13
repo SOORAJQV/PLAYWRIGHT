@@ -9,7 +9,7 @@ test('test', async ({ page, context }) => {
   test.setTimeout(60000); 
 
   console.log('Navigating to the login page...');
-  await page.goto('https://auth-q-sit-pf.qvantel.systems/auth/realms/qvantel/protocol/openid-connect/auth?ui_locales=en&scope=openid&response_type=code&redirect_uri=https%3A%2F%2Fsct-q-sit-pf.qvantel.systems%3A443%2Foauth2%2Fcallback&state=510b7232-2341-4ab8-9af7-212e6e9e157f%7C%2F&client_id=sales-and-care-toolbox');
+  await page.goto('https://sct-q-sit-pf.qvantel.systems/');
   console.log('Login page loaded successfully.');
 
   console.log('Filling in username and password...');
@@ -19,8 +19,7 @@ test('test', async ({ page, context }) => {
 
   console.log('Clicking on Sign In button...');
   await page.getByRole('button', { name: 'Sign In' }).click();
-  await page.getByRole('link', { name: 'Return to the start page' }).click();
-  await page.getByRole('button', { name: 'Logged in Tom Tamer ' });
+  await expect(page.getByRole('button', { name: /Tom Tamer/ })).toHaveText('Logged inTom Tame');
   console.log('Login to Tom user is successful.');
 
   console.log('Navigating to the shop tab...');

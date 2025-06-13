@@ -1,13 +1,13 @@
 import { expect } from '@playwright/test';
 import { test } from '../jira-fixture';
 
-test('SCT_LOGIN @smoke', async ({ page }) => {
+test('SCT_LOGIN', async ({ page }) => {
 
   test.setTimeout(60000);
 
   await page.context().tracing.start({ screenshots: true, snapshots: true });
 
-  await page.goto('https://auth-q-sit-pf.qvantel.systems/auth/realms/qvantel/protocol/openid-connect/auth?ui_locales=en&scope=openid&response_type=code&redirect_uri=https%3A%2F%2Fsct-q-sit-pf.qvantel.systems%3A443%2Foauth2%2Fcallback&state=92082ea1-844c-4f72-8f7c-06a56aa28366%7C%2F&client_id=sales-and-care-toolbox');
+  await page.goto('https://sct-q-sit-pf.qvantel.systems/');
   await page.waitForLoadState('networkidle');
   await page.screenshot({ path: 'screenshots/step1.png' });
 
@@ -25,9 +25,6 @@ test('SCT_LOGIN @smoke', async ({ page }) => {
   await page.waitForLoadState('networkidle');
   await page.screenshot({ path: 'screenshots/step4.png' });
 
-  await page.getByRole('link', { name: 'Return to the start page' }).click();
-  await page.waitForLoadState('networkidle');
-  await page.screenshot({ path: 'screenshots/step5.png' });
 
   await page.getByRole('textbox', { name: 'Type Customer name' }).click();
   await page.getByRole('textbox', { name: 'Type Customer name' }).fill('post onbrd');
