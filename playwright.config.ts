@@ -22,8 +22,11 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
 
-  // ✅ Allure reporter configuration
-  reporter: [['allure-playwright']],
+  // ✅ Use both 'list' and 'allure-playwright' reporters
+  reporter: [
+    ['list'],
+    ['allure-playwright']
+  ],
 
   use: {
     trace: 'on-first-retry',
