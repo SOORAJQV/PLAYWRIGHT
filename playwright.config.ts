@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+
   /* Run tests in files in parallel */
   fullyParallel: true,
 
@@ -17,7 +18,11 @@ export default defineConfig({
   /* Reporters */
   reporter: [
     ['list'],
-    ['allure-playwright']
+    ['allure-playwright', {
+      outputFolder: './allure-results', // ✅ Explicitly define output path
+      detail: true,
+      suiteTitle: false
+    }]
   ],
 
   /* Shared settings for all the projects below */
@@ -25,7 +30,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    baseURL: 'http://localhost:3000', // or set your actual base URL if needed
+    baseURL: 'http://localhost:3000', // or set your actual base URL
   },
 
   /* Define browser projects */
@@ -44,7 +49,7 @@ export default defineConfig({
     },
   ],
 
-  /* Optional: Start a dev server before running tests */
+  // Optional web server config
   // webServer: {
   //   command: 'npm run start',
   //   url: 'http://localhost:3000',
