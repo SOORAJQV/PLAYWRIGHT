@@ -1,8 +1,7 @@
 import { expect } from '@playwright/test';
-import { test } from '../jira-fixture';
+import { test } from '../JIRA/jira-fixture';
 
 require('dotenv').config();
-
 const generateUniqueValue = (prefix = '') => `${prefix}${Date.now()}${Math.floor(Math.random() * 1000)}`;
 
 test('test @Regression', async ({ page, context }) => {

@@ -1,0 +1,47 @@
+# Page snapshot
+
+```yaml
+- banner:
+  - heading "Qvantel Sales and Care Toolbox" [level=1]
+  - button "Customer name"
+  - textbox "Type Customer name"
+  - button
+  - navigation:
+    - button ""
+    - button
+    - button "Logged in Tom Tamer "
+- navigation:
+  - text: Dashboard No active customer session
+  - button "Execute action"
+- navigation:
+  - list:
+    - listitem:
+      - link " Dashboard":
+        - /url: /
+    - listitem:
+      - link " Tasks":
+        - /url: /team-tasks
+    - listitem:
+      - link " Actions":
+        - /url: /actions
+    - listitem:
+      - link " Interactions":
+        - /url: /interactions
+    - listitem:
+      - link " Shop":
+        - /url: /dashboardShop
+- main:
+  - heading "Dashboard" [level=1]
+  - heading "Interactions" [level=3]
+  - text:  Loading...
+  - heading "Cases" [level=4]
+  - heading "Ongoing flows" [level=3]
+  - button " Refresh" [disabled]
+  - text:  Loading...
+  - heading "Tasks assigned to me" [level=4]
+  - text:  Loading
+  - heading "Tasks created to me" [level=4]
+  - text:  Loading
+- complementary:
+  - navigation
+```

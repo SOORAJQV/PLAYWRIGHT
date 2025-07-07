@@ -1,12 +1,12 @@
 import { expect } from '@playwright/test';
-import { test } from '../jira-fixture';
+import { test } from '../JIRA/jira-fixture';
 
 require('dotenv').config();
 
 const generateUniqueValue = (prefix = '') => `${prefix}${Date.now()}${Math.floor(Math.random() * 1000)}`;
 
 test('test', async ({ page, context }) => {
-  test.setTimeout(60000); 
+  test.setTimeout(60); 
 
   console.log('Navigating to the login page...');
   await page.goto('https://sct-q-sit-pf.qvantel.systems/');

@@ -1,5 +1,5 @@
 import { expect } from '@playwright/test';
-import { test } from '../jira-fixture';
+import { test } from '../JIRA/jira-fixture';
 
 test('SCT_LOGIN', async ({ page }) => {
 

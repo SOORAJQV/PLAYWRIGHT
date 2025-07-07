@@ -1,0 +1,22 @@
+Navigating to the login page...
+Login page loaded successfully.
+Filling in username and password...
+Verified Username and password fields are enabled.
+Clicking on Sign In button...
+Login to Tom user is successful.
+Navigating to the shop tab...
+Navigated to shop tab and opened Mobile postpaid section from Plans.
+Performing risk assessment...
+Clicked on Perform Risk Assessment button and the window is opened successfully.
+Filling in identification details...
+Generated Identification Code: ID-1751872338770423
+Generated Issuing Authority: Auth-1751872338786918
+Identification details are filled successfully.
+No previously stored customer found is displayed and window for entering customer details opened successfully.
+Customer details are entered successfully and clicked on continue button.
+Successfully selected the Plan Qvantel Super Postpaid and clicked on continue button.
+Selected the msisdn and clicked on continue button.
+Working as expected.
+All the forms have been successfully filled!
+✅ Created issue: XSP-1616
+🔗 https://qvantel-sandbox.atlassian.net/browse/XSP-1616
