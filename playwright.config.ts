@@ -1,38 +1,34 @@
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
-import path from 'path';
 
-// Load environment variables from .env file
-dotenv.config({ path: path.resolve(__dirname, '.env') });
-/**
- * Allure reporter is already configured below in the reporter array.
- * If you want to add multiple reporters (e.g., 'list' and 'allure-playwright'),
- * update the reporter configuration as shown below.
- */
-
-// Example: Add 'list' reporter along with 'allure-playwright'
-const reporters = [
-  ['list'],
-  ['allure-playwright']
-];
 export default defineConfig({
   testDir: './tests',
+  /* Run tests in files in parallel */
   fullyParallel: true,
+
+  /* Fail the build on CI if test.only is left */
   forbidOnly: !!process.env.CI,
+
+  /* Retry failed tests on CI only */
   retries: process.env.CI ? 2 : 0,
+
+  /* Limit parallelism on CI */
   workers: process.env.CI ? 1 : undefined,
 
-  // ✅ Use both 'list' and 'allure-playwright' reporters
+  /* Reporters */
   reporter: [
     ['list'],
     ['allure-playwright']
   ],
 
+  /* Shared settings for all the projects below */
   use: {
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
+    baseURL: 'http://localhost:3000', // or set your actual base URL if needed
   },
 
+  /* Define browser projects */
   projects: [
     {
       name: 'chromium',
@@ -47,4 +43,11 @@ export default defineConfig({
       use: { ...devices['Desktop Safari'] },
     },
   ],
+
+  /* Optional: Start a dev server before running tests */
+  // webServer: {
+  //   command: 'npm run start',
+  //   url: 'http://localhost:3000',
+  //   reuseExistingServer: !process.env.CI,
+  // },
 });
