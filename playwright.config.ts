@@ -4,7 +4,17 @@ import path from 'path';
 
 // Load environment variables from .env file
 dotenv.config({ path: path.resolve(__dirname, '.env') });
+/**
+ * Allure reporter is already configured below in the reporter array.
+ * If you want to add multiple reporters (e.g., 'list' and 'allure-playwright'),
+ * update the reporter configuration as shown below.
+ */
 
+// Example: Add 'list' reporter along with 'allure-playwright'
+const reporters = [
+  ['list'],
+  ['allure-playwright']
+];
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
